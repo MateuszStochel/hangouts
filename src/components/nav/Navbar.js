@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Topnav from "./Topnav";
+import Topnav from "./desktopnav/Topnav";
 
 const Wrapper = styled.div`
   position: relative;

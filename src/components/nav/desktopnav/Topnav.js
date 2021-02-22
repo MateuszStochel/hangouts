@@ -1,10 +1,10 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import { openModal } from "../../../store/actions/action";
 
-const TopnavWrapper = styled.div`
-  background-color: blue;
-`;
+const TopnavWrapper = styled.div``;
 const LinkItemsWrapper = styled.div`
   display: flex;
 `;
@@ -12,8 +12,11 @@ const LinkItem = styled(NavLink)`
   color: black;
   cursor: pointer;
 `;
-
+const Button = styled.button`
+  background-color: red;
+`;
 const Topnav = () => {
+  const dispatch = useDispatch();
   return (
     <TopnavWrapper>
       <LinkItemsWrapper>
@@ -23,6 +26,12 @@ const Topnav = () => {
         <LinkItem activeclass="active" to="/">
           Home
         </LinkItem>
+        <Button onClick={() => dispatch(openModal({ modalType: "Login" }))}>
+          Login
+        </Button>
+        <Button onClick={() => dispatch(openModal({ modalType: "Register" }))}>
+          Register
+        </Button>
       </LinkItemsWrapper>
     </TopnavWrapper>
   );

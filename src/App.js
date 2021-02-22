@@ -5,7 +5,7 @@ import { Container } from "semantic-ui-react";
 import "./App.css";
 import EventForm from "./EventForm";
 import HomePage from "./HomePage";
-import Navbar from "./Navbar";
+import Navbar from "./components/nav/Navbar";
 
 function App() {
   return (
