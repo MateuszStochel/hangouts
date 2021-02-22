@@ -3,7 +3,9 @@ import { Route, Switch } from "react-router";
 import { Container } from "semantic-ui-react";
 
 import "./App.css";
+import EventForm from "./EventForm";
 import HomePage from "./HomePage";
+import Navbar from "./Navbar";
 
 function App() {
   return (
@@ -11,6 +13,7 @@ function App() {
       <Navbar component={Navbar} />
       <Switch>
         <Route exact path="/" component={HomePage} />
+        <Route path="/createEvent" component={EventForm} />
       </Switch>
     </Container>
   );
