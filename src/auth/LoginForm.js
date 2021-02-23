@@ -37,7 +37,11 @@ const LoginForm = () => {
         {({ isSubmitting, isValid, dirty, errors }) => (
           <Form className="ui form">
             <MyTextInput name="email" placeholder="email" />
-            <MyTextInput name="password" placeholder="password" />
+            <MyTextInput
+              name="password"
+              placeholder="password"
+              type="password"
+            />
           </Form>
         )}
       </Formik>

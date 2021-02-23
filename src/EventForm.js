@@ -6,7 +6,10 @@ import { toast } from "react-toastify";
 import styled from "styled-components";
 
 import MyTextInput from "./form/MyTextInput";
+import MyTextArea from "./form/MyTextArea";
+import MySelectInput from "./form/MySelectInput";
 import { addEventToFirestore } from "./firestore/firestoreService";
+import { categoryData } from "./CategoryData/CategoryOptions";
 
 const initialValues = {
   title: "",
@@ -47,9 +50,13 @@ const EventForm = ({ match, history }) => {
           <Form className="ui form">
             <Heading>Event Details</Heading>
             <MyTextInput name="title" placeholder="Event title" />
+            <MySelectInput
+              name="category"
+              placeholder="Category"
+              options={categoryData}
+            />
             <MyTextInput name="venue" placeholder="Venue" />
-            <MyTextInput name="category" placeholder="Venue" />
-            <MyTextInput name="description" placeholder="Venue" />
+            <MyTextArea name="description" placeholder="Venue" />
             <MyTextInput name="date" placeholder="Venue" />
 
             <button loading={isSubmitting} type="submit">

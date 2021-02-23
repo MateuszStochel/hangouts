@@ -14,7 +14,7 @@ export default function MyTextInput({ label, ...props }) {
   return (
     <>
       <label>{label}</label>
-      <input {...field} {...props} />
+      <textarea {...field} {...props} />
       {meta.touched && meta.error ? (
         <Label basic color="red">
           {meta.error}
