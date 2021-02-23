@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
-import test from "./test";
+import reducerModal from "./reducers/modalReducer";
 const rootReducer = combineReducers({
-  test: test,
+  modal: reducerModal,
 });
 
 export default rootReducer;

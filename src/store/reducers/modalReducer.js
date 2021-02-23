@@ -1,11 +1,14 @@
-import { CLOSE_MODAL, OPEN_MODAL } from "../const/const";
+import { CLOSE_MODAL, OPEN_MODAL } from "../const/modalConst";
 
 const initialState = null;
 
 export default function modalReducer(state = initialState, { type, payload }) {
+  console.log(type, "asdasdas");
+  console.log(initialState, "sadasdasdasd");
   switch (type) {
     case OPEN_MODAL:
       const { modalType, modalProps } = payload;
+      console.log(modalType, modalProps);
       return { modalType, modalProps };
     case CLOSE_MODAL:
       return null;

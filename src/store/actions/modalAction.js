@@ -1,6 +1,7 @@
-import { CLOSE_MODAL, OPEN_MODAL } from "../const/const";
+import { CLOSE_MODAL, OPEN_MODAL } from "../const/modalConst";
 
 export function openModal(payload) {
+  console.log(payload);
   return {
     type: OPEN_MODAL,
     payload,
