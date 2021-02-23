@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import checkIcon from "./assets/svg/check.svg";
 
 const Wrapper = styled.ul`
   display: flex;
@@ -20,12 +21,23 @@ const Category = styled.span`
 const Checkmark = styled.span`
   position: relative;
   display: block;
-  width: 25px;
-  height: 25px;
+  width: 20px;
+  height: 20px;
   border: 1px solid #ddd;
   border-radius: 2px;
-
   overflow: hidden;
+  &:after {
+    display: ${({ isActive }) => (isActive ? "block" : "none")};
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: 20px;
+    height: 20px;
+    background: url(${checkIcon}) center no-repeat;
+    background-size: 70%;
+    background-color: blue;
+  }
 `;
 const CategoryWrapper = styled.label`
   display: flex;
@@ -39,6 +51,7 @@ const CategoryWrapper = styled.label`
     color: red;
   }
 `;
+const Button = styled.button``;
 const categories = ["All events", "match", "party", "party", "party"];
 
 const CategoriesFilters = () => {
@@ -46,10 +59,12 @@ const CategoriesFilters = () => {
     <Wrapper>
       {categories.map((category, index) => (
         <CategoryWrapper key={category}>
-          <Checkmark />
+          <Checkmark isActive />
           <Category>{`${category} (${index})`}</Category>
         </CategoryWrapper>
       ))}
+      <Button>Filter</Button>
+      <Button>Clear</Button>
     </Wrapper>
   );
 };
