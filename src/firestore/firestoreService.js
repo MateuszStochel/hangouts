@@ -38,3 +38,25 @@ export function setuserProfileData(user) {
 export function getUserProfile(userId) {
   return db.collection("users").doc(userId);
 }
+
+export function listenToEventsFromFirestore() {
+  let eventsRef = db.collection("events");
+  return eventsRef;
+  // switch (predicate.get("filter")) {
+  //   case "Music":
+  //     return eventsRef.where("category", "==", "music");
+  //   case "Travel":
+  //     return eventsRef.where("category", "==", "travel");
+  //   case "Drinks":
+  //     return eventsRef.where("category", "==", "drinks");
+  //   case "Culture":
+  //     return eventsRef.where("category", "==", "culture");
+  //   case "Film":
+  //     return eventsRef.where("category", "==", "film");
+  //   case "Food":
+  //     return eventsRef.where("category", "==", "food");
+
+  //   default:
+  //     return eventsRef.where("category", "All");
+  // }
+}

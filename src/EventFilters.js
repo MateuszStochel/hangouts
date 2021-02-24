@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import img from "./assets/user.png";
 
@@ -15,6 +16,8 @@ const UserImage = styled.img`
   width: 60px;
   height: 60px;
   margin-bottom: 20px;
+  border-radius: 50%;
+  box-shadow: 0 0 3px;
 `;
 const EventInfoWrapper = styled.div``;
 
@@ -39,6 +42,8 @@ const EventJoinButton = styled.button`
 `;
 
 const EventFilters = () => {
+  const { events } = useSelector((state) => state.events);
+  console.log(events.culture, "hh");
   return (
     <Wrapper>
       <UserImage src={img} />

@@ -7,7 +7,6 @@ export function signIn(data) {
 
 export async function registerInFirebase(data) {
   try {
-    console.log("hiiii");
     const result = await firebase
       .auth()
       .createUserWithEmailAndPassword(data.email, data.password);

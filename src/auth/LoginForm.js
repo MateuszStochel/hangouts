@@ -6,7 +6,16 @@ import { signIn } from "../firebase/firebaseService";
 
 import ModalWrapper from "../Modals/ModalWrapper";
 import MyTextInput from "../form/MyTextInput";
+import { useDispatch } from "react-redux";
+import styled from "styled-components";
 
+const Button = styled.button`
+  font-size: 20px;
+  padding: 0 20px;
+`;
+const Label = styled.div`
+  color: red;
+`;
 const initialValues = {
   email: "",
   password: "",
@@ -18,6 +27,7 @@ const validationSchema = Yup.object({
 });
 
 const LoginForm = () => {
+  const dispatch = useDispatch();
   return (
     <ModalWrapper header="Sign in">
       <Formik
@@ -27,7 +37,7 @@ const LoginForm = () => {
           try {
             await signIn(values);
             setSubmitting(false);
-            dispatchEvent(closeModal());
+            dispatch(closeModal());
           } catch (error) {
             setErrors({ auth: "Problem with username or password" });
             setSubmitting(false);
@@ -42,6 +52,8 @@ const LoginForm = () => {
               placeholder="password"
               type="password"
             />
+            {errors.auth && <Label>{errors.auth}</Label>}
+            <Button type="submit">btn</Button>
           </Form>
         )}
       </Formik>

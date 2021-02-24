@@ -1,6 +1,5 @@
 import React from "react";
 import { Route, Switch } from "react-router";
-import { Container } from "semantic-ui-react";
 
 import "./App.css";
 import EventForm from "./EventForm";
@@ -9,17 +8,26 @@ import Navbar from "./components/nav/Navbar";
 import ModalManager from "./Modals/ModalManager";
 import Backdrop from "./Modals/Backdrop";
 
+import styled from "styled-components";
+
+const Container = styled.div`
+  max-width: 1600px;
+  margin: 0 auto;
+`;
+
 function App() {
   return (
-    <Container>
+    <>
       <ModalManager />
       <Backdrop />
       <Navbar component={Navbar} />
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route path="/createEvent" component={EventForm} />
-      </Switch>
-    </Container>
+      <Container>
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route path="/createEvent" component={EventForm} />
+        </Switch>
+      </Container>
+    </>
   );
 }
 

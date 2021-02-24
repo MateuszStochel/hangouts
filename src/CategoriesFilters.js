@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import checkIcon from "./assets/svg/check.svg";
 
@@ -52,14 +53,20 @@ const CategoryWrapper = styled.label`
   }
 `;
 const Button = styled.button``;
-const categories = ["All events", "match", "party", "party", "party"];
+const categories = ["Drinks", "Culture", "Film", "Food", "Music", "Travel"];
 
 const CategoriesFilters = () => {
+  const { events } = useSelector((state) => state.events);
   return (
     <Wrapper>
       {categories.map((category, index) => (
-        <CategoryWrapper key={category}>
-          <Checkmark isActive />
+        <CategoryWrapper
+          key={category}
+          // onClick={() => setPredicate("filter", `${category}`)}
+        >
+          <Checkmark
+          // isActive={predicate.get("filter") === `${category}`}
+          />
           <Category>{`${category} (${index})`}</Category>
         </CategoryWrapper>
       ))}
