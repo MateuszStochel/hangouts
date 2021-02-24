@@ -55,13 +55,15 @@ const CategoryWrapper = styled.label`
 const Button = styled.button``;
 const categories = ["Drinks", "Culture", "Film", "Food", "Music", "Travel"];
 
-const CategoriesFilters = () => {
+const CategoriesFilters = ({ onClickCheckbox }) => {
   const { events } = useSelector((state) => state.events);
+
   return (
     <Wrapper>
       {categories.map((category, index) => (
         <CategoryWrapper
           key={category}
+          onClick={() => onClickCheckbox(category)}
           // onClick={() => setPredicate("filter", `${category}`)}
         >
           <Checkmark

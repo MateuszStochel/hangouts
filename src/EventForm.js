@@ -35,7 +35,6 @@ const EventForm = ({ match, history }) => {
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={async (values, { setSubmitting }) => {
-          console.log("hii");
           try {
             await addEventToFirestore(values);
             setSubmitting(false);

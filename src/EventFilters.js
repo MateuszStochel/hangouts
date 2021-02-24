@@ -43,7 +43,7 @@ const EventJoinButton = styled.button`
 
 const EventFilters = () => {
   const { events } = useSelector((state) => state.events);
-  console.log(events.culture, "hh");
+
   return (
     <Wrapper>
       <UserImage src={img} />

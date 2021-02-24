@@ -6,7 +6,6 @@ export default function modalReducer(state = initialState, { type, payload }) {
   switch (type) {
     case OPEN_MODAL:
       const { modalType, modalProps } = payload;
-      console.log(modalType, modalProps);
       return { modalType, modalProps };
     case CLOSE_MODAL:
       return null;

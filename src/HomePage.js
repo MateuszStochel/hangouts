@@ -28,17 +28,38 @@ const HomePage = () => {
   const transformEventsToArray = useMemo(() => {
     return Object.values(events).flat();
   }, [events]);
-  console.log(transformEventsToArray);
+
+  const setSelected = (checkedCategory) => {
+    let categories;
+    const isSelected = selectedCategories?.some(
+      (selectedCategory) => selectedCategory === checkedCategory
+    );
+
+    if (selectedCategories) {
+      isSelected &&
+        (categories = selectedCategories.filter(
+          (category) => category !== checkedCategory
+        ));
+      !isSelected && (categories = [...selectedCategories, checkedCategory]);
+
+      setSelectedCategories(categories.length ? categories : null);
+    }
+
+    !selectedCategories && setSelectedCategories([checkedCategory]);
+  };
+
   useFirestoreCollection({
     query: () => listenToEventsFromFirestore(),
     data: (events) => dispatch(listenToEvents(events, selectedCategories)),
     deps: [dispatch, selectedCategories],
   });
 
+  console.log(selectedCategories);
+
   return (
     <Wrapper>
       <EventFilters events={transformEventsToArray} />
-      <EventList onClickCheckbox={setSelectedCategories} />
+      <EventList onClickCheckbox={setSelected} />
     </Wrapper>
   );
 };

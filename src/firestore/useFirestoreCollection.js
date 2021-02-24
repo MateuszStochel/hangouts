@@ -45,7 +45,6 @@ export default function useFirestoreCollection({ query, data, deps }) {
     const unsubscribe = query().onSnapshot(
       (snapshot) => {
         const docs = snapshot.docs.map((doc) => dataFromSnapshot(doc));
-        console.log(EventsModel.groupEventsByCategory(docs));
 
         data(EventsModel.groupEventsByCategory(docs));
         dispatch(asyncActionFinish());
