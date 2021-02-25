@@ -9,6 +9,7 @@ import ModalManager from "./Modals/ModalManager";
 import Backdrop from "./Modals/Backdrop";
 
 import styled from "styled-components";
+import PrivateRoute from "./PrivateRoute";
 
 const Container = styled.div`
   max-width: 1600px;
@@ -24,7 +25,7 @@ function App() {
       <Container>
         <Switch>
           <Route exact path="/" component={HomePage} />
-          <Route path="/createEvent" component={EventForm} />
+          <PrivateRoute path="/createEvent" component={EventForm} />
         </Switch>
       </Container>
     </>

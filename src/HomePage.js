@@ -18,7 +18,6 @@ const Wrapper = styled.div`
 
 const HomePage = () => {
   const dispatch = useDispatch();
-  // const [predicate, setPredicate] = useState("");
   const [selectedCategories, setSelectedCategories] = useState(null);
 
   const events = useSelector(({ events }) =>
@@ -30,36 +29,29 @@ const HomePage = () => {
   }, [events]);
 
   const setSelected = (checkedCategory) => {
-    let categories;
-    const isSelected = selectedCategories?.some(
-      (selectedCategory) => selectedCategory === checkedCategory
+    const mySelectedCategories = new Set(selectedCategories);
+    mySelectedCategories.has(checkedCategory)
+      ? mySelectedCategories.delete(checkedCategory)
+      : mySelectedCategories.add(checkedCategory);
+    const mySelectedCategoriesArray = Array.from(mySelectedCategories);
+    setSelectedCategories(
+      mySelectedCategoriesArray.length ? mySelectedCategoriesArray : null
     );
-
-    if (selectedCategories) {
-      isSelected &&
-        (categories = selectedCategories.filter(
-          (category) => category !== checkedCategory
-        ));
-      !isSelected && (categories = [...selectedCategories, checkedCategory]);
-
-      setSelectedCategories(categories.length ? categories : null);
-    }
-
-    !selectedCategories && setSelectedCategories([checkedCategory]);
   };
 
   useFirestoreCollection({
     query: () => listenToEventsFromFirestore(),
-    data: (events) => dispatch(listenToEvents(events, selectedCategories)),
+    data: (events) => dispatch(listenToEvents(events)),
     deps: [dispatch, selectedCategories],
   });
-
-  console.log(selectedCategories);
 
   return (
     <Wrapper>
       <EventFilters events={transformEventsToArray} />
-      <EventList onClickCheckbox={setSelected} />
+      <EventList
+        selectedCategories={selectedCategories}
+        onClickCheckbox={setSelected}
+      />
     </Wrapper>
   );
 };

@@ -1,4 +1,4 @@
-import { SIGN_IN_USER, SIGN_OUT_USER } from "./authConstans";
+import { SIGN_IN_USER, SIGN_OUT_USER } from "../const/authContans";
 import { APP_LOADED } from "../reducers/asyncReducer";
 import firebase from "../../config/firebase";
 import {

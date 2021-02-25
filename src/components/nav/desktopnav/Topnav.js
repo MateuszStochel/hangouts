@@ -1,8 +1,11 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { NavLink, useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
 import styled from "styled-components";
-import { openModal } from "../../../store/actions/modalAction";
+import { signOutFirebase } from "../../../firestore/firestoreService";
+import SignInMenu from "./SignInMenu";
+import SignOutMenu from "./SignOutMenu";
 
 const TopnavWrapper = styled.div``;
 const LinkItemsWrapper = styled.div`
@@ -16,24 +19,20 @@ const Button = styled.button`
   background-color: red;
 `;
 const Topnav = () => {
-  const dispatch = useDispatch();
+  const { authenticated } = useSelector((state) => state.auth);
+
   return (
     <TopnavWrapper>
       <LinkItemsWrapper>
-        <LinkItem activeclass="active" to="/createEvent">
-          Create Event
-        </LinkItem>
         <LinkItem activeclass="active" to="/">
           Home
         </LinkItem>
-        <Button onClick={() => dispatch(openModal({ modalType: "LoginForm" }))}>
-          Login
-        </Button>
-        <Button
-          onClick={() => dispatch(openModal({ modalType: "RegisterForm" }))}
-        >
-          Register
-        </Button>
+        {authenticated && (
+          <LinkItem to="/createEvent">
+            <Button>Create Event</Button>
+          </LinkItem>
+        )}
+        {authenticated ? <SignInMenu /> : <SignOutMenu />}
       </LinkItemsWrapper>
     </TopnavWrapper>
   );

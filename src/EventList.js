@@ -11,12 +11,15 @@ const Heading = styled.h2`
   width: 100%;
 `;
 
-const EventList = ({ onClickCheckbox }) => {
+const EventList = ({ onClickCheckbox, selectedCategories }) => {
   return (
     <Wrapper>
       <Input />
       <Heading>Categories</Heading>
-      <CategoriesFilters onClickCheckbox={onClickCheckbox} />
+      <CategoriesFilters
+        selectedCategories={selectedCategories}
+        onClickCheckbox={onClickCheckbox}
+      />
     </Wrapper>
   );
 };

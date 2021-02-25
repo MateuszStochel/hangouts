@@ -20,10 +20,11 @@ export function dataFromSnapshot(snapshot) {
 }
 
 export function addEventToFirestore(event) {
+  const user = firebase.auth().currentUser;
   return db.collection("events").add({
     ...event,
-    hostUid: "hostuid",
-    hostedBy: "MateuszS",
+    hostUid: user.uid,
+    hostedBy: user.displayName,
   });
 }
 
@@ -37,6 +38,9 @@ export function setuserProfileData(user) {
 
 export function getUserProfile(userId) {
   return db.collection("users").doc(userId);
+}
+export function signOutFirebase() {
+  return firebase.auth().signOut();
 }
 
 export function listenToEventsFromFirestore() {
