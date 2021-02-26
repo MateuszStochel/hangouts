@@ -1,15 +1,27 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useHistory } from "react-router-dom";
-import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
+
 import styled from "styled-components";
-import { signOutFirebase } from "../../../firestore/firestoreService";
+import logo from "../../../assets/svg/logo.svg";
 import SignInMenu from "./SignInMenu";
 import SignOutMenu from "./SignOutMenu";
 
-const TopnavWrapper = styled.div``;
+const TopnavWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  height: 60px;
+  background-color: rgba(100, 142, 153);
+`;
 const LinkItemsWrapper = styled.div`
   display: flex;
+`;
+const Logo = styled.div`
+  background: url(${logo}) center no-repeat;
+  background-size: 100%;
+  width: 200px;
+  margin-left: 1rem;
+  cursor: pointer;
 `;
 const LinkItem = styled(NavLink)`
   color: black;
@@ -24,6 +36,7 @@ const Topnav = () => {
   return (
     <TopnavWrapper>
       <LinkItemsWrapper>
+        <Logo />
         <LinkItem activeclass="active" to="/">
           Home
         </LinkItem>

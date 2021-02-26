@@ -1,8 +1,7 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Modal, Button, Divider } from "semantic-ui-react";
-import { openModal } from "../../app/common/modals/modalReducer";
+import { Button, Divider, Modal } from "semantic-ui-react";
+import { openModal } from "./store/actions/modalAction";
 
 export default function UnauthModal({ history, setModalOpen }) {
   const [open, setOpen] = useState(true);

@@ -16,10 +16,14 @@ const SignInMenu = () => {
       toast.error(error.message);
     }
   }
+  const changeURL = (path) => {
+    history.push(path);
+  };
   return (
     <div>
       <div>{currentUserProfile?.displayName}</div>
       <div onClick={handleSignOut}>SignOut</div>
+      <div onClick={() => changeURL("/myprofile")}>MyProfile</div>
     </div>
   );
 };

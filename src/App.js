@@ -25,6 +25,7 @@ function App() {
       <Container>
         <Switch>
           <Route exact path="/" component={HomePage} />
+          {/* <Route path="/profile/:id" component={ProfilePage} /> */}
           <PrivateRoute path="/createEvent" component={EventForm} />
         </Switch>
       </Container>
